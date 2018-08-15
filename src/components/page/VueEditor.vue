@@ -26,7 +26,7 @@
         name: 'editor',
         data: function(){
             return {
-                content: '',
+                content: '你好啊房间看电视垃圾筐发了多少',
                 editorOption: {
                     placeholder: 'Hello World'
                 }

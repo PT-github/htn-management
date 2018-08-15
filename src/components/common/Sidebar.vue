@@ -31,6 +31,21 @@
                 collapse: false,
                 items: [
                     {
+                        icon: 'el-icon-news',
+                        index: '1',
+                        title: '新闻中心',
+                        subs: [
+                            {
+                                index: 'news-center',
+                                title: '新闻列表'
+                            },
+                            {
+                                index: 'news-add',
+                                title: '新增新闻'
+                            }
+                        ]
+                    },
+                    {
                         icon: 'el-icon-setting',
                         index: 'dashboard',
                         title: '系统首页'

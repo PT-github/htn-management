@@ -15,6 +15,16 @@ export default new Router({
             meta: { title: '自述文件' },
             children:[
                 {
+                    path: '/news-center',
+                    component: resolve => require(['../components/page/news/news-center.vue'], resolve),
+                    meta: { title: '新闻中心' }
+                },
+                {
+                    path: '/news-add',
+                    component: resolve => require(['../components/page/news/news-add.vue'], resolve),
+                    meta: { title: '新增新闻' }
+                },
+                {
                     path: '/dashboard',
                     component: resolve => require(['../components/page/Dashboard.vue'], resolve),
                     meta: { title: '系统首页' }
