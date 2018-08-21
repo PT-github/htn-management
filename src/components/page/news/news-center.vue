@@ -12,7 +12,7 @@
                 <el-input v-model="keywords" placeholder="筛选关键词" class="handle-input mr10"></el-input>
                 <el-button type="primary" icon="search" @click="search">搜索</el-button>
                 <div style="float: right">
-                  <el-button type="primary" @click="search">新增</el-button>
+                  <el-button type="primary" @click="goAddNews">新增</el-button>
                   <el-button type="primary" @click="_batchDeleteNews">一键删除</el-button>
                 <el-button type="primary" @click="_batchPublishNews">一键发布</el-button>
                 </div>
@@ -124,6 +124,9 @@ export default {
   },
   computed: {},
   methods: {
+    goAddNews() {
+      this.$router.push('/news-add')
+    },
     _confirmDelete(id) {
       this.$confirm("确认是否删除, 是否继续?", "提示", {
         confirmButtonText: "确定",

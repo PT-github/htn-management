@@ -40,3 +40,10 @@ export function deleteNews(id) {
     }
   })
 }
+export function addNews(data) {
+  return request({
+    url: '/addNews',
+    method: 'post',
+    data
+  })
+}

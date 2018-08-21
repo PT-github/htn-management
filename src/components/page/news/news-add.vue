@@ -19,8 +19,9 @@
           action="/upload"
           :on-preview="handlePreview"
           :on-remove="handleRemove"
+          :on-success="uploadSuccess"
+          :before-upload="beforeUpload"
           :file-list="fileList"
-          :limit=1
           list-type="picture">
           <el-button size="small" type="primary">点击上传</el-button>
           <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
@@ -33,7 +34,7 @@
           </el-radio-group>
       </el-form-item>
       <el-form-item label="内容">
-          <mavon-editor v-model="content" ref="md" @imgAdd="$imgAdd" @change="change" style="min-height: 600px"/>
+          <quill-editor ref="myTextEditor" v-model="form.content" :options="editorOption"></quill-editor>
       </el-form-item>
       <el-form-item>
           <el-button type="primary" @click="onSubmit">表单提交</el-button>
@@ -46,22 +47,25 @@
   </div>
 </template>
 <script>
-import { mavonEditor } from "mavon-editor";
-import "mavon-editor/dist/css/index.css";
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.snow.css";
+import "quill/dist/quill.bubble.css";
+import { quillEditor } from "vue-quill-editor";
+import { addNews } from "@/api/service";
 export default {
   name: "newsAdd",
   data() {
     return {
-      content: "",
-      html: "",
-      configs: {},
+      editorOption: {
+        placeholder: "文章内容"
+      },
 
       form: {
         name: "",
         cate: "1",
         status: 0,
         coverMap: "",
-        name: ""
+        content: ""
       },
       fileList: [],
       dialogVisible: false,
@@ -69,38 +73,52 @@ export default {
     };
   },
   methods: {
-    // 将图片上传到服务器，返回地址替换到md中
-    $imgAdd(pos, $file) {
-      var formdata = new FormData();
-      formdata.append("file", $file);
-      // 这里没有服务器供大家尝试，可将下面上传接口替换为你自己的服务器接口
-      this.$axios({
-        url: "/common/upload",
-        method: "post",
-        data: formdata,
-        headers: { "Content-Type": "multipart/form-data" }
-      }).then(url => {
-        this.$refs.md.$img2Url(pos, url);
+    onSubmit() {
+      const loading = this.$loading({
+        lock: true,
+        spinner: "el-icon-loading",
+        background: "rgba(0, 0, 0, 0.1)",
+        fullscreen: true
       });
+      addNews(this.form)
+        .then(response => {
+          console.log(this.form, response)
+          loading.close();
+          if (response.success) {
+            this.$message({
+              message: "新增成功",
+              type: "success"
+            });
+          } else {
+            this.$message({
+              message: "新增失败",
+              type: "error"
+            });
+          }
+        })
+        .catch(error => {
+          loading.close();
+        });
     },
-    change(value, render) {
-      // render 为 markdown 解析后的结果
-      this.html = render;
-    },
-    submit() {
-      console.log(this.content);
-      console.log(this.html);
-      this.$message.success("提交成功！");
-    },
-
-    onSubmit() {},
     handleRemove() {},
     handlePreview(file) {
       this.dialogImageUrl = file.url;
       this.dialogVisible = true;
     },
+    beforeUpload(file) {
+      const isJPG = file.type.indexOf("image") !== -1; //=== "image/jpeg" || ;
+      const isLt2M = file.size / 1024 / 1024 < 2;
+      if (!isJPG) {
+        this.$message.error("上传头像图片只能是 JPG 格式!");
+        return false;
+      }
+      if (!isLt2M) {
+        this.$message.error("上传头像图片大小不能超过 2MB!");
+        return false;
+      }
+      return isJPG && isLt2M;
+    },
     uploadSuccess(response, file, fileList) {
-      console.log(response, "===");
       this.form.coverMap = response.data.url;
       this.fileList.splice(0, this.fileList.length);
       this.fileList.push({
@@ -110,8 +128,14 @@ export default {
     }
   },
   components: {
-    mavonEditor
+    quillEditor
   }
 };
 </script>
+<style rel="stylesheet/scss" lang="scss">
+.ql-toolbar.ql-snow {
+  line-height: initial;
+}
+</style>
+
 
