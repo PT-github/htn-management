@@ -47,3 +47,10 @@ export function addNews(data) {
     data
   })
 }
+export function queryNewsDetail(id) {
+  return request({
+    url: '/queryNewsDetail',
+    method: 'post',
+    params: {id}
+  })
+}

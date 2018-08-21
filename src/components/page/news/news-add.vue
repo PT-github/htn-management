@@ -51,16 +51,21 @@ import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
 import { quillEditor } from "vue-quill-editor";
-import { addNews } from "@/api/service";
+import { addNews, queryNewsDetail } from "@/api/service";
 export default {
   name: "newsAdd",
+  mounted() {
+    // if (this.$route.query.id) {
+    //   this.getNewsDetail(this.$route.query.id)
+    // }
+  },
   data() {
     return {
       editorOption: {
         placeholder: "文章内容"
       },
-
       form: {
+        id: '',
         name: "",
         cate: "1",
         status: 0,
@@ -73,6 +78,28 @@ export default {
     };
   },
   methods: {
+    getNewsDetail(id) {
+      this.form.id = id;
+      const loading = this.$loading({
+        lock: true,
+        spinner: "el-icon-loading",
+        background: "rgba(0, 0, 0, 0.1)",
+        fullscreen: true
+      });
+      queryNewsDetail(id)
+        .then(response => {
+          console.log(response)
+          this.form.name = response.data.name
+          this.form.cate = response.data.cate
+          this.form.status = response.data.status
+          this.form.coverMap = response.data.coverMap
+          this.form.content = response.data.content
+          loading.close();
+        })
+        .catch(error => {
+          loading.close();
+        });
+    },
     onSubmit() {
       const loading = this.$loading({
         lock: true,
@@ -86,12 +113,13 @@ export default {
           loading.close();
           if (response.success) {
             this.$message({
-              message: "新增成功",
+              message: (this.form.id ? "修改" : "新增") +"成功",
               type: "success"
             });
+            this.form.id && this.$emit('modifySuccess')
           } else {
             this.$message({
-              message: "新增失败",
+              message: (this.form.id ? "修改" : "新增") + "失败",
               type: "error"
             });
           }
