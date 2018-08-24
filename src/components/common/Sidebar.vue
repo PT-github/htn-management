@@ -51,6 +51,11 @@
                         title: '证书管理'
                     },
                     {
+                        icon: 'el-icon-tickets',
+                        index: 'teacher-management',
+                        title: '教师管理'
+                    },
+                    {
                         icon: 'el-icon-setting',
                         index: 'dashboard',
                         title: '系统首页'

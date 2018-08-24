@@ -29,6 +29,11 @@ export default new Router({
                     component: resolve => require(['../components/page/certificate/certificate-management.vue'], resolve),
                     meta: { title: '证书管理' }
                 },
+                {
+                    path: '/teacher-management',
+                    component: resolve => require(['../components/page/teacher/teacher-management.vue'], resolve),
+                    meta: { title: '教师管理' }
+                },
 
 
 

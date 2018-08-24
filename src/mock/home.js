@@ -49,6 +49,22 @@ export default {
             ]
         });
     },
+    queryTeacher: () => {
+        return Mock.mock({
+            'success': true,
+            "message": '成功',
+            "total": 500,
+            "list|10": [
+                {
+                    "id|+1": 1,
+                    "name|1": ["张三", "李四", "王五"],
+                    "imgUrl|1": ["http://www.hnjkfwy.com/upload/day_180520/201805201139129214.jpg", "http://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1527600577&di=a49676be1b756f35b8e3ab3cb4585143&imgtype=jpg&src=http%3A%2F%2Fimg6.bdstatic.com%2Fimg%2Fimage%2Fpublic%2Fwuqiuhuang.jpg"],
+                    "subject|1": ["学科一", "学科二", "学科三", "学科四", "学科五"],
+                    "detail": "介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息"
+                }
+            ]
+        })
+    },
     upload: () => {
         return Mock.mock({
             success: true,

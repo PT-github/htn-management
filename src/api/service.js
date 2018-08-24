@@ -56,6 +56,15 @@ export function deleteCert(id) {
     }
   })
 }
+export function deleteTeacher(id) {
+  return request({
+    url: '/deleteTeacher',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
 export function addNews(data) {
   return request({
     url: '/addNews',
@@ -66,6 +75,20 @@ export function addNews(data) {
 export function modifyCert(data) {
   return request({
     url: '/modifyCert',
+    method: 'post',
+    data
+  })
+}
+export function modifyTeacher(data) {
+  return request({
+    url: '/modifyTeacher',
+    method: 'post',
+    data
+  })
+}
+export function queryTeacher(data) {
+  return request({
+    url: '/queryTeacher',
     method: 'post',
     data
   })
