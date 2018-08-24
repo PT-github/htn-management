@@ -25,6 +25,23 @@ export default new Router({
                     meta: { title: '新增新闻' }
                 },
                 {
+                    path: '/certificate-management',
+                    component: resolve => require(['../components/page/certificate/certificate-management.vue'], resolve),
+                    meta: { title: '证书管理' }
+                },
+
+
+
+
+
+
+
+
+
+
+
+
+                {
                     path: '/dashboard',
                     component: resolve => require(['../components/page/Dashboard.vue'], resolve),
                     meta: { title: '系统首页' }

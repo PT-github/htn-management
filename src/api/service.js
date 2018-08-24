@@ -6,6 +6,13 @@ export function queryNews(data) {
     data
   })
 }
+export function queryCertificate(data) {
+  return request({
+    url: '/queryCertificate',
+    method: 'post',
+    data
+  })
+}
 export function upload(data) {
   return request({
     url: '/upload',
@@ -40,9 +47,25 @@ export function deleteNews(id) {
     }
   })
 }
+export function deleteCert(id) {
+  return request({
+    url: '/deleteCert',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
 export function addNews(data) {
   return request({
     url: '/addNews',
+    method: 'post',
+    data
+  })
+}
+export function modifyCert(data) {
+  return request({
+    url: '/modifyCert',
     method: 'post',
     data
   })

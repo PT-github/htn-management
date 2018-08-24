@@ -23,6 +23,32 @@ export default {
             ]
         });
     },
+    queryCertificate: () => {
+        return Mock.mock({
+            success: true,
+            message: true,
+            total: 100,
+            "list|10": [
+                {
+                "id|+1": 1,
+                "username|1": ["张三", "李四", "王五"],
+                "sex|1": ['男', '女'],
+                "certId|1": ["430XXXXXXXXXXXXX", "520XXXXXXXXXXXXXXX"],
+                "birth|1": ["2011-03-19", "2012-10-08"],
+                "imgUrl|1" : ["http://www.hnjkfwy.com/upload/day_180520/201805201139129214.jpg", "http://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1527600577&di=a49676be1b756f35b8e3ab3cb4585143&imgtype=jpg&src=http%3A%2F%2Fimg6.bdstatic.com%2Fimg%2Fimage%2Fpublic%2Fwuqiuhuang.jpg"],
+                "cerType": "岗位能力培训证书",
+                "cerName": "中医康复理疗",
+                "cerNo": "xxxxxxxxxxxxxx",
+                "cerLevel": "高级",
+                "cerReport": "合格",
+                "education": "大专",
+                "getCerTime": "2016-10-09",
+                "issuingAgency": "国家卫生计生委能力剑圣和继续教育中心，中国健康促进基金会",
+                "remark": "《健康服务业岗位能力培新合格证书》XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                }
+            ]
+        });
+    },
     upload: () => {
         return Mock.mock({
             success: true,

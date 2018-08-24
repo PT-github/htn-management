@@ -46,6 +46,11 @@
                         ]
                     },
                     {
+                        icon: 'el-icon-sold-out',
+                        index: 'certificate-management',
+                        title: '证书管理'
+                    },
+                    {
                         icon: 'el-icon-setting',
                         index: 'dashboard',
                         title: '系统首页'
