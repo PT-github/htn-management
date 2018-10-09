@@ -116,6 +116,9 @@
               </el-form-item>
             </el-form>
         </el-dialog>
+        <el-dialog :visible.sync="dialogVisible" append-to-body>
+          <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
     </div>
 </template>
 <script>
@@ -135,6 +138,8 @@ export default {
       editVisible: false,
       fileList: [],
       multipleSelection: [],
+      dialogVisible: false,
+      dialogImageUrl: '',
       form: {
         id: "",
         username: "",
