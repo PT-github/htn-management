@@ -9,7 +9,7 @@
                   <el-button type="primary" @click="_batchDeleteNews">一键删除</el-button>
                 </div>
             </div>
-            <el-table tooltip-effect="light" :data="tableData" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
+            <el-table tooltip-effect="light" v-loading="loading" :data="tableData" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="55"></el-table-column>
                 <el-table-column align="center" prop="name" fixed label="姓名" width="100"></el-table-column>
                 <el-table-column align="center" prop="subject" label="学科" width="100"></el-table-column>
@@ -71,6 +71,9 @@
               </el-form-item>
             </el-form>
         </el-dialog>
+        <el-dialog :visible.sync="dialogVisible" append-to-body>
+          <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
     </div>
 </template>
 <script>
@@ -88,6 +91,9 @@ export default {
       editVisible: false,
       fileList: [],
       multipleSelection: [],
+      loading: false,
+      dialogVisible: false,
+      dialogImageUrl: '',
       form: {
         id: "",
         name: "",
@@ -125,7 +131,7 @@ export default {
           loading.close();
           if (res.success) {
             this.$message({
-              message: "修改成功",
+              message: (this.form.id ? '修改' : '新增') + "成功",
               type: "success"
             });
             this.getData();
@@ -147,7 +153,13 @@ export default {
         })
       }
       data = data || {}
-      for (let prop in this.form) {
+      if (data.id) {
+        this.title = data.name + '-修改'
+      } else {
+        this.title = '教师新增'
+      }
+      this.form.id = ''
+      for (let prop in data) {
         this.$set(this.form, prop, data[prop] || '')
       }
       this.$nextTick(() => {
@@ -215,14 +227,22 @@ export default {
         });
     },
     getData() {
+      this.loading = true
+      this.tableData.splice(0, this.tableData.length)
       queryTeacher({
         pageNo: this.pageNo,
         pageSize: this.pageSize,
         name: this.name,
       }).then(res => {
-        this.tableData = res.list;
-        this.total = res.total;
-      });
+        this.loading = false
+        if (res.list && res.list.length > 0) {
+          this.tableData.push(...res.list)
+          this.total = res.total;
+        }
+      }).catch(e => {
+        this.loading = false
+        console.log(e)
+      })
     },
     search() {
       this.pageNo = 1;

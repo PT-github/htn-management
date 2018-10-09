@@ -1,4 +1,149 @@
 import request from '../utils/request'
+export function queryLessonCate(data) {
+  return request({
+    url: '/queryLessonCate',
+    method: 'post',
+    data
+  })
+}
+export function queryVideoList(data) {
+  return request({
+    url: '/queryVideoList',
+    method: 'post',
+    data
+  })
+}
+export function queryVideoCate(data) {
+  return request({
+    url: '/queryVideoCate',
+    method: 'post',
+    data
+  })
+}
+export function queryProject(data) {
+  return request({
+    url: '/queryProject',
+    method: 'post',
+    data
+  })
+}
+export function queryLessonList(data) {
+  return request({
+    url: '/queryLessonList',
+    method: 'post',
+    data
+  })
+}
+export function deleteAdvert(id) {
+  return request({
+    url: '/deleteAdvert',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
+export function deleteLessonList(id) {
+  return request({
+    url: '/deleteLessonList',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
+export function deleteLessonCate(id) {
+  return request({
+    url: '/deleteLessonCate',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
+export function deleteProject(id) {
+  return request({
+    url: '/deleteProject',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
+export function deleteVideo(id) {
+  return request({
+    url: '/deleteVideo',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
+export function deleteVideoCate(id) {
+  return request({
+    url: '/deleteVideoCate',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
+export function modifyAdvert(data) {
+  return request({
+    url: '/modifyAdvert',
+    method: 'post',
+    data
+  })
+}
+export function modifyVideo(data) {
+  return request({
+    url: '/modifyVideo',
+    method: 'post',
+    data
+  })
+}
+export function modifyVideoCate(data) {
+  return request({
+    url: '/modifyVideoCate',
+    method: 'post',
+    data
+  })
+}
+export function modifyProject(data) {
+  return request({
+    url: '/modifyProject',
+    method: 'post',
+    data
+  })
+}
+export function modifyLessons(data) {
+  return request({
+    url: '/modifyLessons',
+    method: 'post',
+    data
+  })
+}
+export function modifyLessonCate(data) {
+  return request({
+    url: '/modifyLessonCate',
+    method: 'post',
+    data
+  })
+}
+export function setAdvertIsDisplay(data) {
+  return request({
+    url: '/setAdvertIsDisplay',
+    method: 'post',
+    data
+  })
+}
+export function queryAdvert(data) {
+  return request({
+    url: '/queryAdvert',
+    method: 'post',
+    data
+  })
+}
 export function queryNews(data) {
   return request({
     url: '/queryNews',

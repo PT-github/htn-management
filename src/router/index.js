@@ -34,6 +34,36 @@ export default new Router({
                     component: resolve => require(['../components/page/teacher/teacher-management.vue'], resolve),
                     meta: { title: '教师管理' }
                 },
+                {
+                    path: '/advert-management',
+                    component: resolve => require(['../components/page/advert/advert-management.vue'], resolve),
+                    meta: { title: '广告管理' }
+                },
+                {
+                    path: '/lesson-cate',
+                    component: resolve => require(['../components/page/lesson/lesson-cate.vue'], resolve),
+                    meta: { title: '课程分类管理' }
+                },
+                {
+                    path: '/lesson-list',
+                    component: resolve => require(['../components/page/lesson/lesson-list.vue'], resolve),
+                    meta: { title: '课程列表管理' }
+                },
+                {
+                    path: '/tran-project-list',
+                    component: resolve => require(['../components/page/lesson/tran-project-list.vue'], resolve),
+                    meta: { title: '培训项目管理' }
+                },
+                {
+                    path: '/video-cate',
+                    component: resolve => require(['../components/page/lesson/video-cate.vue'], resolve),
+                    meta: { title: '视频分类管理' }
+                },
+                {
+                    path: '/video-list',
+                    component: resolve => require(['../components/page/lesson/video-list.vue'], resolve),
+                    meta: { title: '视频列表管理' }
+                },
 
 
 

@@ -30,20 +30,25 @@
             return {
                 collapse: false,
                 items: [
+                    // {
+                    //     icon: 'el-icon-news',
+                    //     index: '1',
+                    //     title: '新闻中心',
+                    //     subs: [
+                    //         {
+                    //             index: 'news-center',
+                    //             title: '新闻列表'
+                    //         },
+                    //         {
+                    //             index: 'news-add',
+                    //             title: '新增新闻'
+                    //         }
+                    //     ]
+                    // },
                     {
                         icon: 'el-icon-news',
-                        index: '1',
-                        title: '新闻中心',
-                        subs: [
-                            {
-                                index: 'news-center',
-                                title: '新闻列表'
-                            },
-                            {
-                                index: 'news-add',
-                                title: '新增新闻'
-                            }
-                        ]
+                        index: 'news-center',
+                        title: '新闻中心'
                     },
                     {
                         icon: 'el-icon-sold-out',
@@ -54,6 +59,38 @@
                         icon: 'el-icon-tickets',
                         index: 'teacher-management',
                         title: '教师管理'
+                    },
+                    {
+                        icon: 'el-icon-picture-outline',
+                        index: 'advert-management',
+                        title: '首页广告管理'
+                    },
+                    {
+                        icon: 'el-icon-document',
+                        index: '1',
+                        title: '教育培训',
+                        subs: [
+                            {
+                                index: 'lesson-cate',
+                                title: '课程分类管理'
+                            },
+                            {
+                                index: 'lesson-list',
+                                title: '课程列表管理'
+                            },
+                            {
+                                index: 'tran-project-list',
+                                title: '培训项目管理'
+                            },
+                            {
+                                index: 'video-cate',
+                                title: '视频分类管理'
+                            },
+                            {
+                                index: 'video-list',
+                                title: '视频列表管理'
+                            }
+                        ]
                     },
                     {
                         icon: 'el-icon-setting',
