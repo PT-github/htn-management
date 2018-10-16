@@ -104,6 +104,21 @@ export default {
             ]
         })
     },
+    queryEmployeeUser: () => {
+        return Mock.mock({
+            'success': true,
+            "message": '成功',
+            "total": 500,
+            "list|10": [
+                {
+                    "id|+1": 1,
+                    "name|1": ["管理员", "普通会员"],
+                    level: 1,
+                    contact: '15499098768'
+                }
+            ]
+        })
+    },
     queryVideoList: () => {
         return Mock.mock({
             'success': true,
@@ -117,6 +132,56 @@ export default {
                     "detail": "介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息介绍信息",
                     "imgUrl|1": ["http://www.hnjkfwy.com/upload/day_180520/201805201139129214.jpg","http://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1527600577&di=a49676be1b756f35b8e3ab3cb4585143&imgtype=jpg&src=http%3A%2F%2Fimg6.bdstatic.com%2Fimg%2Fimage%2Fpublic%2Fwuqiuhuang.jpg"],
                     "videoUrl|1": ["http://www.w3school.com.cn/i/movie.ogg", "http://vjs.zencdn.net/v/oceans.mp4"]
+                }
+            ]
+        })
+    },
+    queryFriendsLinks: () => {
+        return Mock.mock({
+            'success': true,
+            "message": '成功',
+            "total": 500,
+            "list|10": [
+                {
+                    "id|+1": 1,
+                    "name|1": ["友情链接名称1", "友情链接名称2", "友情链接名称3"],
+                    "url|1": ["http://www.hnjkfwy.com/upload/day_180520/201805201139129214.jpg","http://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1527600577&di=a49676be1b756f35b8e3ab3cb4585143&imgtype=jpg&src=http%3A%2F%2Fimg6.bdstatic.com%2Fimg%2Fimage%2Fpublic%2Fwuqiuhuang.jpg"]
+                }
+            ]
+        })
+    },
+    queryOnlineUser: () => {
+        return Mock.mock({
+            'success': true,
+            "message": '成功',
+            "total": 500,
+            "list|10": [
+                {
+                    "id|+1": 1,
+                    "username|1": ["用户名1", "用户名2", "用户名3"],
+                    "inviteCode|1": ["inviteCode1", "inviteCode2", "inviteCode3"],
+                    "phone|1": ["15311111111", "15311111112", "15311111113"],
+                    nickname: "昵称",
+                    lastLoginTime: "2018-10-10 12:10:09",
+                    score: 100,
+                    level: 1,
+                    invitor: ['张三', '李四']
+                }
+            ]
+        })
+    },
+    querySignupList: () => {
+        return Mock.mock({
+            'success': true,
+            "message": '成功',
+            "total": 500,
+            "list|10": [
+                {
+                    "id|+1": 1,
+                    "username|1": ["姓名1", "姓名2", "姓名3"],
+                    "account|1": ["account1", "account2", "account3"],
+                    "tel|1": ["15311111111", "15311111112", "15311111113"],
+                    "status|1": [0, 1]
                 }
             ]
         })

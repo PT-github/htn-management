@@ -88,9 +88,61 @@ export function deleteVideoCate(id) {
     }
   })
 }
+export function deleteFriendLinks(id) {
+  return request({
+    url: '/deleteFriendLinks',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
+export function deleteSignupList(id) {
+  return request({
+    url: '/deleteSignupList',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
+export function deleteOnlineUser(id) {
+  return request({
+    url: '/deleteOnlineUser',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
+export function deleteEmployeeUser(id) {
+  return request({
+    url: '/deleteEmployeeUser',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
+export function resetPwdOnlineUser(id) {
+  return request({
+    url: '/resetPwdOnlineUser',
+    method: 'post',
+    params: {
+      id
+    }
+  })
+}
 export function modifyAdvert(data) {
   return request({
     url: '/modifyAdvert',
+    method: 'post',
+    data
+  })
+}
+export function addIncome(data) {
+  return request({
+    url: '/addIncome',
     method: 'post',
     data
   })
@@ -105,6 +157,13 @@ export function modifyVideo(data) {
 export function modifyVideoCate(data) {
   return request({
     url: '/modifyVideoCate',
+    method: 'post',
+    data
+  })
+}
+export function modifySignupList(data) {
+  return request({
+    url: '/modifySignupList',
     method: 'post',
     data
   })
@@ -130,6 +189,27 @@ export function modifyLessonCate(data) {
     data
   })
 }
+export function modifyFriendLinks(data) {
+  return request({
+    url: '/modifyFriendLinks',
+    method: 'post',
+    data
+  })
+}
+export function modifyOnlineUser(data) {
+  return request({
+    url: '/modifyOnlineUser',
+    method: 'post',
+    data
+  })
+}
+export function modifyEmployeeUser(data) {
+  return request({
+    url: '/modifyEmployeeUser',
+    method: 'post',
+    data
+  })
+}
 export function setAdvertIsDisplay(data) {
   return request({
     url: '/setAdvertIsDisplay',
@@ -140,6 +220,34 @@ export function setAdvertIsDisplay(data) {
 export function queryAdvert(data) {
   return request({
     url: '/queryAdvert',
+    method: 'post',
+    data
+  })
+}
+export function queryEmployeeUser(data) {
+  return request({
+    url: '/queryEmployeeUser',
+    method: 'post',
+    data
+  })
+}
+export function queryOnlineUser(data) {
+  return request({
+    url: '/queryOnlineUser',
+    method: 'post',
+    data
+  })
+}
+export function querySignupList(data) {
+  return request({
+    url: '/querySignupList',
+    method: 'post',
+    data
+  })
+}
+export function queryFriendsLinks(data) {
+  return request({
+    url: '/queryFriendsLinks',
     method: 'post',
     data
   })

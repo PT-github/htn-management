@@ -11,7 +11,7 @@
                   <el-button type="primary" @click="_batchDeleteNews">一键删除</el-button>
                 </div>
             </div>
-            <el-table tooltip-effect="light" :data="tableData" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
+            <el-table tooltip-effect="light" v-loading="loading" :data="tableData" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="55"></el-table-column>
                 <el-table-column align="center" prop="username" fixed label="姓名"></el-table-column>
                 <el-table-column align="center" prop="sex" label="性别" width="50"></el-table-column>
@@ -132,6 +132,7 @@ export default {
       name: "",
       id_no: "",
       cert_no: "",
+      loading: false,
       total: 0,
       title: "",
       tableData: [],
@@ -277,6 +278,8 @@ export default {
         });
     },
     getData() {
+      this.loading = true
+      this.tableData.splice(0, this.tableData.length)
       queryCertificate({
         pageNo: this.pageNo,
         pageSize: this.pageSize,
@@ -284,9 +287,12 @@ export default {
         id_no: this.id_no,
         cert_no: this.cert_no
       }).then(res => {
-        this.tableData = res.list;
+        this.loading = false
+        this.tableData.push(...res.list)
         this.total = res.total;
-      });
+      }).catch(() => {
+        this.loading = false
+      })
     },
     search() {
       this.pageNo = 1;

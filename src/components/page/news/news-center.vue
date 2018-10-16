@@ -17,7 +17,7 @@
                 <el-button type="primary" @click="_batchPublishNews">一键发布</el-button>
                 </div>
             </div>
-            <el-table :data="tableData" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
+            <el-table :data="tableData" border v-loading="loading" style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="55"></el-table-column>
                 <el-table-column prop="name" label="标题"></el-table-column>
                 <el-table-column prop="publishTime" label="发布时间" sortable width="150"></el-table-column>
@@ -89,7 +89,7 @@ export default {
       total: 0,
       keywords: '',
       title: '',
-
+      loading: false,
       url: "./static/vuetable.json",
       tableData: [],
       cur_page: 1,
@@ -226,14 +226,19 @@ export default {
         });
     },
     getData() {
+      this.loading = true
+      this.tableData.splice(0, this.tableData.length)
       queryNews({
         pageNo: this.pageNo,
         pageSize: this.pageSize,
         keywords: this.keywords
       }).then(res => {
-        this.tableData = res.list;
+        this.loading = false
+        this.tableData.push(...res.list)
         this.total = res.total;
-      });
+      }).catch(() => {
+        this.loading = false
+      })
     },
     search() {
       this.pageNo = 1;

@@ -64,6 +64,31 @@ export default new Router({
                     component: resolve => require(['../components/page/lesson/video-list.vue'], resolve),
                     meta: { title: '视频列表管理' }
                 },
+                {
+                    path: '/friend-links',
+                    component: resolve => require(['../components/page/friends/friends-links.vue'], resolve),
+                    meta: { title: '友情链接管理' }
+                },
+                {
+                    path: '/signup-list',
+                    component: resolve => require(['../components/page/signup/signup-list.vue'], resolve),
+                    meta: { title: '网上报名管理' }
+                },
+                {
+                    path: '/onlineUser-list',
+                    component: resolve => require(['../components/page/user/onlineUser-list.vue'], resolve),
+                    meta: { title: '互联网用户管理' }
+                },
+                {
+                    path: '/employee-list',
+                    component: resolve => require(['../components/page/user/employee-list.vue'], resolve),
+                    meta: { title: '员工管理' }
+                },
+                {
+                    path: '/income-add',
+                    component: resolve => require(['../components/page/user/income-add.vue'], resolve),
+                    meta: { title: '新增收益' }
+                },
 
 
 
