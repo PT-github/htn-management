@@ -12,8 +12,8 @@
       <el-form-item label="开始时间">
           <el-date-picker
             v-model="form.startTime"
-            type="date"
-            format="yyyy 年 MM 月 dd 日"
+            type="datetime"
+            format="yyyy-MM-dd HH:mm:ss"
             value-format="timestamp"
             placeholder="选择日期时间">
           </el-date-picker>
@@ -21,8 +21,8 @@
       <el-form-item label="结束时间">
           <el-date-picker
             v-model="form.endTime"
-            type="date"
-            format="yyyy 年 MM 月 dd 日"
+            type="datetime"
+            format="yyyy-MM-dd HH:mm:ss"
             value-format="timestamp"
             placeholder="选择日期时间">
           </el-date-picker>
@@ -30,7 +30,7 @@
       <el-form-item label="封面图">
         <el-upload
           class="upload-demo"
-          action="/upload"
+          action="http://www.hnjkrcw.com/admin/upload"
           :on-preview="handlePreview"
           :on-remove="handleRemove"
           :on-success="uploadSuccess"
@@ -188,6 +188,9 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 .ql-toolbar.ql-snow {
   line-height: initial;
+}
+.ql-editor{
+    height:500px;
 }
 </style>
 

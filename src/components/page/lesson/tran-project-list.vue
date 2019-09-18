@@ -10,6 +10,7 @@
             </div>
             <el-table tooltip-effect="light" v-loading="loading" :data="tableData" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
                 <el-table-column align="center" prop="name" fixed label="项目名称"></el-table-column>
+
                 <el-table-column fixed="right" label="操作" width="150">
                     <template slot-scope="scope">
                         <el-button size="small" @click="_editCerti(scope.row)">编辑</el-button>
@@ -25,6 +26,9 @@
               <el-form-item label="项目名称">
                 <el-input v-model="form.name"></el-input>
               </el-form-item>
+                <el-form-item label="优先级">
+                    <el-input v-model="form.priority"></el-input>
+                </el-form-item>
               <el-form-item label="项目详情">
                 <quill-editor ref="myTextEditor" v-model="form.content" :options="editorOption"></quill-editor>
               </el-form-item>
@@ -54,6 +58,8 @@ export default {
       form: {
         id: "",
         name: "",
+          priority: 100,
+          homeFlag: false,
         content: ""
       },
       editorOption: {
@@ -114,6 +120,9 @@ export default {
         for (let prop in this.form) {
           this.$set(this.form, prop, '')
         }
+
+          this.form.priority = 100
+          this.form.homeFlag = false
       }
       this.$nextTick(() => {
         this.editVisible = true
@@ -232,5 +241,8 @@ export default {
 .del-dialog-cnt {
   font-size: 16px;
   text-align: center;
+}
+.ql-editor{
+    height:500px;
 }
 </style>

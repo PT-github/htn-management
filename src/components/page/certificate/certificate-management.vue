@@ -66,7 +66,7 @@
               <el-form-item label="头像">
                 <el-upload
                   class="upload-demo"
-                  action="/upload"
+                  action="http://www.hnjkrcw.com/admin/upload"
                   :on-preview="handlePreview"
                   :on-remove="handleRemove"
                   :on-success="uploadSuccess"

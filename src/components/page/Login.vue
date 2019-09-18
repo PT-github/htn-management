@@ -24,7 +24,7 @@
             return {
                 ruleForm: {
                     username: 'admin',
-                    password: '123123'
+                    password: ''
                 },
                 rules: {
                     username: [
@@ -39,12 +39,18 @@
         methods: {
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
-                    if (valid) {
-                        localStorage.setItem('ms_username',this.ruleForm.username);
-                        this.$router.push('/');
-                    } else {
-                        console.log('error submit!!');
-                        return false;
+                    if (this.ruleForm.username === 'admin' && this.ruleForm.password === '321'){
+
+                        if (valid) {
+                            localStorage.setItem('ms_username',this.ruleForm.username);
+                            this.$router.push('/');
+                        } else {
+                            console.log('error submit!!');
+                            return false;
+                        }
+                    }
+                    else{
+                        this.$message.error("用户名或密码不正确!");
                     }
                 });
             }

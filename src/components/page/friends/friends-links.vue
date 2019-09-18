@@ -28,6 +28,9 @@
               <el-form-item label="地址">
                 <el-input v-model="form.url"></el-input>
               </el-form-item>
+                <el-form-item label="优先级">
+                    <el-input v-model="form.priority" placeholder="越大越优先(默认100)"></el-input>
+                </el-form-item>
               <el-form-item>
                 <el-button type="primary" @click="onSubmit">保存</el-button>
                 <el-button @click="editVisible = false">取消</el-button>
@@ -57,6 +60,7 @@ export default {
       form: {
         id: "",
         name: "",
+          priority: "",
         url: ""
       }
     };
@@ -118,11 +122,13 @@ export default {
         this.form.id = data.id
         this.form.name = data.name
         this.form.url = data.url
+          this.form.priority = data.priority
       } else {
         this.form.id = ''
         this.form.name = ''
         this.form.url = ''
-        this.title = '课程新增'
+          this.form.priority = ''
+        this.title = '友情链接新增'
       }
       this.$nextTick(() => {
         this.editVisible = true

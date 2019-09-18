@@ -43,7 +43,7 @@
                 </el-table-column>
                 <el-table-column align="center" prop="examInforFee" label="考试及资料费" width="100">
                   <template slot-scope="scope">
-                    {{ scope.row.trainingFee + '元' }}
+                    {{ scope.row.examInforFee + '元' }}
                   </template>
                 </el-table-column>
                 <el-table-column align="center" label="合计" width="100">
@@ -172,6 +172,7 @@ export default {
       } else {
         this.title = '课程新增'
       }
+      console.log(JSON.stringify(data))
       this.$nextTick(() => {
         this.editVisible = true
         this.$nextTick(() => {

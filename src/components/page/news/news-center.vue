@@ -231,7 +231,8 @@ export default {
       queryNews({
         pageNo: this.pageNo,
         pageSize: this.pageSize,
-        keywords: this.keywords
+        keywords: this.keywords,
+          category: this.select_cate
       }).then(res => {
         this.loading = false
         this.tableData.push(...res.list)
