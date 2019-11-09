@@ -51,7 +51,8 @@
           <el-input v-model="form.examInforFee"></el-input>
       </el-form-item>
       <el-form-item label="课程详情">
-          <quill-editor ref="myTextEditor" v-model="form.content" :options="editorOption"></quill-editor>
+          <!--<quill-editor ref="myTextEditor" v-model="form.content" :options="editorOption"></quill-editor>-->
+          <Ueditor :value="content" :config="config" ref="ue"></Ueditor>
       </el-form-item>
       <el-form-item>
           <el-button type="primary" @click="onSubmit">提交</el-button>
@@ -63,6 +64,7 @@
   </div>
 </template>
 <script>
+    import Ueditor from '@/components/common/Ueditor.vue';
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
@@ -83,6 +85,11 @@ export default {
   },
   data() {
     return {
+        content: '',
+        config: {
+            initialFrameWidth: null,
+            initialFrameHeight: 400
+        },
       editorOption: {
         placeholder: "课程详情"
       },
@@ -96,7 +103,8 @@ export default {
         classHour: "",
         trainingFee: "",
         examInforFee: "",
-        content: ""
+        content: "",
+          priority: 100
       },
       fileList: [],
       dialogVisible: false,
@@ -108,6 +116,12 @@ export default {
       this.fileList.splice(0, this.fileList.length)
       if (data) {
         for (let prop in data) {
+            if ('content' === prop) {
+            this.content = data[prop]
+
+                this.$refs.ue.editor.setContent(this.content)
+            //this.$ref.ue.setUeContent(response.data.content);
+             }
           this.$set(this.form, prop, data[prop] || '')
         }
         if (this.form.imgUrl) {
@@ -132,6 +146,7 @@ export default {
         background: "rgba(0, 0, 0, 0.1)",
         fullscreen: true
       });
+        this.form.content = this.$refs.ue.getUEContent()
       modifyLessons(this.form)
         .then(response => {
           console.log(this.form, response)
@@ -181,7 +196,8 @@ export default {
     }
   },
   components: {
-    quillEditor
+    quillEditor,
+      Ueditor
   }
 };
 </script>

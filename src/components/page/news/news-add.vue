@@ -34,7 +34,8 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="内容">
-                <quill-editor ref="myTextEditor" v-model="form.content" :options="editorOption"></quill-editor>
+                <!--<quill-editor ref="myTextEditor" v-model="form.content" :options="editorOption"></quill-editor>-->
+                <Ueditor :value="content" :config="config" ref="ue"></Ueditor>
             </el-form-item>
             <el-form-item label="首页推荐">
                 <el-switch
@@ -66,9 +67,7 @@
     </div>
 </template>
 <script>
-    import "quill/dist/quill.core.css";
-    import "quill/dist/quill.snow.css";
-    import "quill/dist/quill.bubble.css";
+    import Ueditor from '@/components/common/Ueditor.vue';
     import {quillEditor} from "vue-quill-editor";
     import {addNews, queryNewsDetail} from "@/api/service";
     export default {
@@ -80,6 +79,11 @@
         },
         data() {
             return {
+                content: '',
+                config: {
+                    initialFrameWidth: null,
+                    initialFrameHeight: 400
+                },
                 editorOption: {
                     placeholder: "文章内容"
                 },
@@ -116,12 +120,17 @@
                         this.form.cate = response.data.cate
                         this.form.status = response.data.status
                         this.form.coverMap = response.data.coverMap
-                        this.fileList.splice(0, this.fileList.length);
-                        this.fileList.push({
-                            name: "封面图",
-                            url: response.data.coverMap
-                        });
+                        if (response.data.coverMap) {
+                            this.fileList.splice(0, this.fileList.length);
+                            this.fileList.push({
+                                name: "封面图",
+                                url: response.data.coverMap
+                            });
+                        }
                         this.form.content = response.data.content
+                        this.content = response.data.content
+                        this.$refs.ue.editor.setContent(this.content)
+
                         this.form.homeFlag = response.data.homeFlag
                         this.form.scrollFlag = response.data.scrollFlag
                         this.form.priority = response.data.priority
@@ -139,6 +148,7 @@
                     background: "rgba(0, 0, 0, 0.1)",
                     fullscreen: true
                 });
+                this.form.content = this.$refs.ue.getUEContent()
                 addNews(this.form)
                     .then(response => {
                         console.log(this.form, response)
@@ -189,7 +199,8 @@
             }
         },
         components: {
-            quillEditor
+            quillEditor,
+            Ueditor
         }
     };
 </script>

@@ -3,8 +3,8 @@ import { Message } from 'element-ui'
 
 // create an axios instance
 const service = axios.create({
-	// baseURL: process.env.BASE_API, // api的base_url
-	timeout: 5000 // request timeout
+	baseURL: process.env.BASE_API, // api的base_url
+	timeout: 30000 // request timeout
 })
 // respone interceptor
 service.interceptors.response.use(
